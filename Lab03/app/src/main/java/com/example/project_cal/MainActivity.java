@@ -35,7 +35,38 @@ public class MainActivity extends AppCompatActivity {
         btnSum.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int A = Integer.parseInt()
+                int A = Integer.parseInt("0"+edtA.getText());
+                int B = Integer.parseInt("0"+edtB.getText());
+                edtResult.setText("a + b = "+ (A+B));
+            }
+        });
+        btnDifference.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int A = Integer.parseInt("0"+edtA.getText());
+                int B = Integer.parseInt("0"+edtB.getText());
+                edtResult.setText("a - b = "+ (A-B));
+            }
+        });
+        btnProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int A = Integer.parseInt("0"+edtA.getText());
+                int B = Integer.parseInt("0"+edtB.getText());
+                edtResult.setText("a * b = "+ (A*B));
+            }
+        });
+        btnQuotient.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int A = Integer.parseInt("0"+edtA.getText());
+                int B = Integer.parseInt("0"+edtB.getText());
+                if(B==0){
+                    edtResult.setText("B phải khác 0");
+                }
+                else {
+                    edtResult.setText("a / b = " + (A/B));
+                }
             }
         });
     }
