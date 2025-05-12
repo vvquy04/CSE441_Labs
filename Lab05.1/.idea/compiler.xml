@@ -2,7 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
-      <module name="BMI.app" target="21" />
+      <module name="Convert_Gregorian_Year.app" target="21" />
     </bytecodeTargetLevel>
   </component>
 </project>
