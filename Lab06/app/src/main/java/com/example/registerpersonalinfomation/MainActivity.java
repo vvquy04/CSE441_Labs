@@ -11,6 +11,7 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -80,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
                     hobby+=chkCode.getText().toString() + "\n";
                 }
                 String info = edtInfo.getText().toString();
-                AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                 builder.setTitle("Thông tin cá nhân");
                 builder.setPositiveButton("Đóng", new DialogInterface.OnClickListener() {
                     @Override
@@ -97,29 +98,33 @@ public class MainActivity extends AppCompatActivity {
                 msg+=info+"\n";
                 msg+="--------------\n";
                 builder.setMessage(msg);
+
                 builder.create();
+                builder.show();
             }
 
         });
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                AlertDialog.Builder b = new AlertDialog.Builder(MainActivity.this);
+                b.setTitle("Question");
+                b.setMessage("Are you sure you want to exit?");
+                b.setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                });
+                b.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                b.create().show();
+            }
+        });
     }
 
-//    @Override
-//    public void onBackPressed() {
-//        AlertDialog.Builder b = new AlertDialog.Builder(MainActivity.this);
-//        b.setTitle("Question");
-//        b.setMessage("Are you sure you want to exit?");
-//        b.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//                finish();
-//            }
-//        });
-//        b.setNegativeButton("No", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//                dialog.cancel();
-//            }
-//        });
-//        b.create().show();
-//    }
 }

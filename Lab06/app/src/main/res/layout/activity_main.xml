@@ -166,7 +166,6 @@
             android:ems="10"
             android:inputType="text|textMultiLine"
             android:minLines="2" />
-
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_sendinfo"
             android:layout_width="wrap_content"
